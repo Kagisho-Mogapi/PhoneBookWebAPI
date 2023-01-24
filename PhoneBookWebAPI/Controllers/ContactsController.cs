@@ -39,7 +39,7 @@ namespace PhoneBookWebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = contact.Id }, contact);
         }
 
-        [HttpPut]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> Update(int id, Contact contact)
         {
             if (id != contact.Id)
@@ -51,7 +51,7 @@ namespace PhoneBookWebAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var contact = await _context.Contacts.FindAsync(id);
